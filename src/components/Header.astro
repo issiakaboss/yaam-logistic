@@ -1,0 +1,85 @@
+---
+// src/components/Header.astro
+---
+
+<header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="#home">
+          <img 
+            src="/logo.jpeg" 
+            alt="YAM LOGISTICS LLC Logo" 
+            class="h-12 sm:h-14 w-auto object-contain"
+          />
+        </a>
+      </div>
+
+      <!-- Liens de navigation (Optimisés pour s'adapter et éviter le chevauchement) -->
+      <nav class="hidden lg:flex space-x-6 xl:space-x-8" id="nav-menu">
+        <a href="#home" class="nav-link text-sm font-semibold pb-1 transition-all text-[#0252b9] border-b-2 border-[#0252b9]" data-section="home">HOME</a>
+        <a href="#about" class="nav-link text-sm font-semibold pb-1 transition-all text-slate-600 hover:text-[#0252b9] border-b-2 border-transparent" data-section="about">ABOUT US</a>
+        <a href="#services" class="nav-link text-sm font-semibold pb-1 transition-all text-slate-600 hover:text-[#0252b9] border-b-2 border-transparent" data-section="services">SERVICES</a>
+        <a href="#carriers" id="nav-carriers" class="nav-link text-sm font-semibold pb-1 transition-all text-slate-600 hover:text-[#0252b9] border-b-2 border-transparent" data-section="carriers">CARRIERS</a>
+        <a href="#shippers" id="nav-shippers" class="nav-link text-sm font-semibold pb-1 transition-all text-slate-600 hover:text-[#0252b9] border-b-2 border-transparent" data-section="shippers">SHIPPERS</a>
+        <a href="#contact" class="nav-link text-sm font-semibold pb-1 transition-all text-slate-600 hover:text-[#0252b9] border-b-2 border-transparent" data-section="contact">CONTACT</a>
+      </nav>
+
+      <!-- Bouton d'appel (Masqué sur tablette pour laisser respirer le header, visible sur grand écran et mobile compact) -->
+      <div class="flex items-center">
+        <a 
+          href="tel:4051234567" 
+          class="flex items-center gap-2 bg-[#0252b9] hover:bg-[#0f2942] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-md font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md"
+        >
+          📞 <span class="hidden sm:inline">(405) 123-4567</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<script>
+  // Script pour colorer dynamiquement les onglets actifs lors du scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let currentSectionId = 'home';
+    const scrollPosition = window.scrollY + 120; // Décalage pour le header collant
+
+    sections.forEach(section => {
+      const sectionTop = (section as HTMLElement).offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSectionId = section.getAttribute('id') || 'home';
+      }
+    });
+
+    navLinks.forEach(link => {
+      const targetSection = link.getAttribute('data-section');
+      
+      // Cas particulier : Carriers et Shippers mènent au formulaire de contact
+      if (currentSectionId === 'contact') {
+        // Ne colore que Contact
+        if (targetSection === 'contact') {
+          link.classList.add('text-[#0252b9]', 'border-[#0252b9]');
+          link.classList.remove('text-slate-600', 'border-transparent');
+        } else {
+          link.classList.remove('text-[#0252b9]', 'border-[#0252b9]');
+          link.classList.add('text-slate-600', 'border-transparent');
+        }
+      } else {
+        if (targetSection === currentSectionId) {
+          link.classList.add('text-[#0252b9]', 'border-[#0252b9]');
+          link.classList.remove('text-slate-600', 'border-transparent');
+        } else {
+          link.classList.remove('text-[#0252b9]', 'border-[#0252b9]');
+          link.classList.add('text-slate-600', 'border-transparent');
+        }
+      }
+    });
+  });
+</script>

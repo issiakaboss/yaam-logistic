@@ -1,0 +1,165 @@
+---
+// src/components/Contact.astro
+---
+
+<section id="contact" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Colonne Gauche -->
+      <div class="lg:col-span-5">
+        <p class="text-xs font-bold tracking-widest text-[#0252b9] uppercase">Get In Touch</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Ready to Grow Your Business?
+        </h2>
+        <p class="mt-4 text-slate-600 leading-relaxed">
+          Whether you are a professional carrier looking for premium dedicated dispatch solutions, or a shipper needing secure and reliable freight transport, our team is here for you 24/7.
+        </p>
+
+        <!-- Liste des infos -->
+        <div class="mt-8 space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0252b9] flex items-center justify-center shrink-0">
+              <span class="text-lg">📞</span>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Call Us</p>
+              <a href="tel:4051234567" class="text-sm font-semibold text-slate-900 hover:text-[#0252b9] transition-colors">(405) 123-4567</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0252b9] flex items-center justify-center shrink-0">
+              <span class="text-lg">✉️</span>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Email</p>
+              <a href="mailto:info@yamlogistics.com" class="text-sm font-semibold text-slate-900 hover:text-[#0252b9] transition-colors">info@yamlogistics.com</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0252b9] flex items-center justify-center shrink-0">
+              <span class="text-lg">📍</span>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Location</p>
+              <p class="text-sm font-semibold text-slate-900">Oklahoma City, OK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne Droite : Formulaire -->
+      <div class="lg:col-span-7 bg-slate-50 p-8 sm:p-10 rounded-2xl border border-slate-100 shadow-sm" id="contact-form-container">
+        
+        <!-- Onglets -->
+        <div class="flex border-b border-slate-200 mb-8 gap-4">
+          <button 
+            id="tab-carrier"
+            class="pb-4 text-sm font-bold tracking-wider uppercase border-b-2 border-[#0252b9] text-[#0252b9] transition-all focus:outline-none"
+          >
+            I am a Carrier
+          </button>
+          <button 
+            id="tab-shipper"
+            class="pb-4 text-sm font-bold tracking-wider uppercase border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all focus:outline-none"
+          >
+            I am a Shipper
+          </button>
+        </div>
+
+        <form action="#" method="POST" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Your Name</label>
+              <input type="text" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Email Address</label>
+              <input type="email" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Phone Number</label>
+              <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+            </div>
+            
+            <!-- Dynamic Carrier Field -->
+            <div id="field-carrier-only">
+              <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Equipment Type</label>
+              <select class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all">
+                <option>Dry Van</option>
+                <option>Reefer</option>
+                <option>Flatbed</option>
+                <option>Power Only</option>
+                <option>Box Truck</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Shipper Field -->
+            <div id="field-shipper-only" class="hidden">
+              <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Company Name</label>
+              <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Your Message</label>
+            <textarea rows="4" placeholder="How can we help you?" class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 bg-[#0252b9] hover:bg-[#0f2942] text-white font-bold rounded-lg uppercase tracking-wider text-sm transition-all shadow-md">
+            Send Message
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabCarrier = document.getElementById('tab-carrier');
+  const tabShipper = document.getElementById('tab-shipper');
+  const fieldCarrier = document.getElementById('field-carrier-only');
+  const fieldShipper = document.getElementById('field-shipper-only');
+
+  function setCarrierActive() {
+    tabCarrier?.classList.add('border-[#0252b9]', 'text-[#0252b9]');
+    tabCarrier?.classList.remove('border-transparent', 'text-slate-400');
+    tabShipper?.classList.add('border-transparent', 'text-slate-400');
+    tabShipper?.classList.remove('border-[#0252b9]', 'text-[#0252b9]');
+    fieldCarrier?.classList.remove('hidden');
+    fieldShipper?.classList.add('hidden');
+  }
+
+  function setShipperActive() {
+    tabShipper?.classList.add('border-[#0252b9]', 'text-[#0252b9]');
+    tabShipper?.classList.remove('border-transparent', 'text-slate-400');
+    tabCarrier?.classList.add('border-transparent', 'text-slate-400');
+    tabCarrier?.classList.remove('border-[#0252b9]', 'text-[#0252b9]');
+    fieldCarrier?.classList.add('hidden');
+    fieldShipper?.classList.remove('hidden');
+  }
+
+  tabCarrier?.addEventListener('click', setCarrierActive);
+  tabShipper?.addEventListener('click', setShipperActive);
+
+  // Écouter les clics sur les boutons du menu pour changer d'onglet
+  document.getElementById('nav-carriers')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    setCarrierActive();
+  });
+
+  document.getElementById('nav-shippers')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    setShipperActive();
+  });
+</script>

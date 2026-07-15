@@ -1,0 +1,122 @@
+---
+// src/components/Hero.astro
+---
+
+<section id="home" class="relative bg-slate-900 text-white overflow-hidden">
+  
+  <!-- Image de fond : Camion américain bleu de face au crépuscule -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/hero-truck.png" 
+      alt="Yam Logistics official truck" 
+      class="w-full h-full object-cover object-center md:object-right opacity-45"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-slate-950/20"></div>
+  </div>
+
+  <!-- Contenu Principal -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 md:pt-32 md:pb-28">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none uppercase">
+        Moving Freight. <br/>
+        <span class="text-[#3b82f6]">Delivering Trust.</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-xl">
+        YAM LOGISTICS LLC is a professional freight dispatch company dedicated to connecting reliable carriers with quality loads across the nation.
+      </p>
+      <div class="mt-10">
+        <a 
+          href="#contact" 
+          class="inline-flex items-center gap-2 bg-[#0252b9] hover:bg-[#2563eb] text-white font-bold px-8 py-4 rounded-md tracking-wider transition-all shadow-lg hover:shadow-xl uppercase text-sm"
+        >
+          Get Started
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bandeau noir des 4 piliers -->
+  <div class="relative z-10 bg-slate-950/90 border-t border-slate-800/60 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Avantage 1 -->
+        <div class="flex items-start gap-4">
+          <div class="text-[#3b82f6] p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.75A1.125 1.125 0 012.625 17.625V12m0 0h1.875c.621 0 1.125-.504 1.125-1.125V8.25c0-.621-.504-1.125-1.125-1.125H2.625M2.625 12V4.875C2.625 4.116 3.241 3.5 4 3.5h7.125c.621 0 1.125.504 1.125 1.125V12m0 0h7.125c.621 0 1.125.504 1.125 1.125V18" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm tracking-wide uppercase">Freight Dispatch</h4>
+            <p class="text-xs text-slate-400 mt-1">We find the best loads so you can keep moving.</p>
+          </div>
+        </div>
+
+        <!-- Avantage 2 -->
+        <div class="flex items-start gap-4">
+          <div class="text-[#3b82f6] p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm tracking-wide uppercase">Reliable Partners</h4>
+            <p class="text-xs text-slate-400 mt-1">Strong relationships with brokers and shippers.</p>
+          </div>
+        </div>
+
+        <!-- Avantage 3 -->
+        <div class="flex items-start gap-4">
+          <div class="text-[#3b82f6] p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.214.113a3.346 3.346 0 003.71-.237l.214-.113a3.346 3.346 0 000-5.698L12.928 9.15a3.346 3.346 0 00-3.71-.236l-.214.113A3.346 3.346 0 009 13.182z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm tracking-wide uppercase">Maximize Profit</h4>
+            <p class="text-xs text-slate-400 mt-1">We focus on high-paying loads and minimal empty miles.</p>
+          </div>
+        </div>
+
+        <!-- Avantage 4 -->
+        <div class="flex items-start gap-4">
+          <div class="text-[#3b82f6] p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75v-4.5m0 4.5h4.5m-4.5 0l6-6m-3 18c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm tracking-wide uppercase">24/7 Support</h4>
+            <p class="text-xs text-slate-400 mt-1">Our team is here for you anytime, anywhere.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- LA BARRE D'INFO BLANCHE EST PLACÉE ICI (Entièrement en dehors de la zone sombre du camion) -->
+<div class="bg-white text-slate-700 py-5 border-b border-slate-100 hidden md:block relative z-20 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center text-xs font-bold tracking-wider uppercase">
+      <div class="flex items-center gap-2">
+        <span class="text-[#0252b9] text-sm">📍</span> Based in Oklahoma City, OK
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[#0252b9] text-sm">✓</span> Professional & Trusted
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[#0252b9] text-sm">👥</span> Carrier-Focused Dispatch
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[#0252b9] text-sm">🌐</span> Nationwide Coverage
+      </div>
+    </div>
+  </div>
+</div>
