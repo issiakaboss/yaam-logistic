@@ -70,28 +70,39 @@
           </button>
         </div>
 
-        <form action="#" method="POST" class="space-y-6">
+       <!-- Formulaire connecté à Web3Forms -->
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+          
+          <!-- Remplace la valeur ci-dessous par la clé reçue par email -->
+          <input type="hidden" name="access_key" value="583bb6fe-da77-424a-a73c-8e2db50006ea">
+          
+          <!-- Redirection après envoi (Optionnel : ramène l'utilisateur sur ton site avec un message de succès) -->
+          <input type="hidden" name="redirect" value="https://yamlogistics.netlify.app/#contact">
+          
+          <!-- Sujet personnalisé pour l'email reçu -->
+          <input type="hidden" name="subject" value="New Contact Form Submission - YAM LOGISTICS">
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Your Name</label>
-              <input type="text" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+              <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
             </div>
             <div>
               <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Email Address</label>
-              <input type="email" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+              <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Phone Number</label>
-              <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+              <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
             </div>
             
             <!-- Dynamic Carrier Field -->
             <div id="field-carrier-only">
               <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Equipment Type</label>
-              <select class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all">
+              <select name="equipment_type" class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all">
                 <option>Dry Van</option>
                 <option>Reefer</option>
                 <option>Flatbed</option>
@@ -104,13 +115,13 @@
             <!-- Dynamic Shipper Field -->
             <div id="field-shipper-only" class="hidden">
               <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Company Name</label>
-              <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
+              <input type="text" name="company_name" class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all" />
             </div>
           </div>
 
           <div>
             <label class="block text-xs font-bold uppercase tracking-wide text-slate-600 mb-2">Your Message</label>
-            <textarea rows="4" placeholder="How can we help you?" class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all resize-none"></textarea>
+            <textarea name="message" rows="4" placeholder="How can we help you?" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all resize-none"></textarea>
           </div>
 
           <button type="submit" class="w-full py-4 bg-[#0252b9] hover:bg-[#0f2942] text-white font-bold rounded-lg uppercase tracking-wider text-sm transition-all shadow-md">
