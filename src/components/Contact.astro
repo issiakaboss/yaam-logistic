@@ -70,14 +70,11 @@
           </button>
         </div>
 
-       <!-- Formulaire connecté à Web3Forms -->
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+        <!-- Formulaire connecté à Web3Forms -->
+        <form id="contact-form" class="space-y-6">
           
-          <!-- Remplace la valeur ci-dessous par la clé reçue par email -->
+          <!-- Clé d'accès Web3Forms -->
           <input type="hidden" name="access_key" value="583bb6fe-da77-424a-a73c-8e2db50006ea">
-          
-          <!-- Redirection après envoi (Optionnel : ramène l'utilisateur sur ton site avec un message de succès) -->
-          <input type="hidden" name="redirect" value="https://yamlogistics.netlify.app/#contact">
           
           <!-- Sujet personnalisé pour l'email reçu -->
           <input type="hidden" name="subject" value="New Contact Form Submission - YAM LOGISTICS">
@@ -124,9 +121,12 @@
             <textarea name="message" rows="4" placeholder="How can we help you?" required class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#0252b9] transition-all resize-none"></textarea>
           </div>
 
-          <button type="submit" class="w-full py-4 bg-[#0252b9] hover:bg-[#0f2942] text-white font-bold rounded-lg uppercase tracking-wider text-sm transition-all shadow-md">
+          <button type="submit" id="submit-btn" class="w-full py-4 bg-[#0252b9] hover:bg-[#0f2942] text-white font-bold rounded-lg uppercase tracking-wider text-sm transition-all shadow-md">
             Send Message
           </button>
+
+          <!-- Zone de notification de succès / d'erreur dynamique -->
+          <div id="form-result" class="hidden text-center p-4 rounded-lg font-semibold text-sm transition-all"></div>
         </form>
 
       </div>
@@ -139,6 +139,10 @@
   const tabShipper = document.getElementById('tab-shipper');
   const fieldCarrier = document.getElementById('field-carrier-only');
   const fieldShipper = document.getElementById('field-shipper-only');
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const result = document.getElementById('form-result');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
 
   function setCarrierActive() {
     tabCarrier?.classList.add('border-[#0252b9]', 'text-[#0252b9]');
@@ -172,5 +176,66 @@
     e.preventDefault();
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     setShipperActive();
+  });
+
+  // Gestion dynamique de l'envoi de formulaire (AJAX)
+  form?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Désactiver le bouton et indiquer l'envoi
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending Message...";
+    }
+    
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
+    })
+    .then(async (response) => {
+      let res = await response.json();
+      if (response.status === 200) {
+        if (result) {
+          result.className = "text-center p-4 rounded-lg font-semibold text-sm bg-green-100 text-green-800 border border-green-200";
+          result.innerText = "Your message was sent successfully! We will get back to you shortly.";
+        }
+        form.reset();
+      } else {
+        if (result) {
+          result.className = "text-center p-4 rounded-lg font-semibold text-sm bg-red-100 text-red-800 border border-red-200";
+          result.innerText = res.message || "An error occurred. Please try again.";
+        }
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      if (result) {
+        result.className = "text-center p-4 rounded-lg font-semibold text-sm bg-red-100 text-red-800 border border-red-200";
+        result.innerText = "Unable to connect. Please check your internet connection.";
+      }
+    })
+    .finally(() => {
+      // Réactiver le bouton
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Send Message";
+      }
+      
+      // Afficher le message de résultat
+      result?.classList.remove('hidden');
+      
+      // Masquer automatiquement le message après 6 secondes
+      setTimeout(() => {
+        result?.classList.add('hidden');
+      }, 6000);
+    });
   });
 </script>
