@@ -31,7 +31,7 @@ Pour que le site fonctionne et que les e-mails professionnels soient sécurisés
 * **SPF (Sender Policy Framework) :**
   * **Type :** `TXT`
   * **Nom :** `yamlogistic.com` (ou `@`)
-  * **Valeur :** `v=spf1 include:_spf.mailhostinger.com ~all` *(Autorise Hostinger à envoyer des e-mails pour notre compte)*.
+  * **Valeur :** `v=spf1 include:_spf.mail.hostinger.com ~all` *(Autorise Hostinger à envoyer des e-mails pour notre compte)*.
 * **DKIM (DomainKeys Identified Mail) :**
   * **Type :** `TXT`
   * **Nom :** `hostingermail1._domainkey.yamlogistic.com`
